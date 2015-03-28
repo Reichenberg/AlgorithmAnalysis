@@ -1,0 +1,5 @@
+c:\users\chance\documents\visual studio 2013\Projects\AlgorithmAnalysis\AlgorithmAnalysis\bin\Debug\AlgorithmAnalysis.exe.config
+c:\users\chance\documents\visual studio 2013\Projects\AlgorithmAnalysis\AlgorithmAnalysis\bin\Debug\AlgorithmAnalysis.exe
+c:\users\chance\documents\visual studio 2013\Projects\AlgorithmAnalysis\AlgorithmAnalysis\bin\Debug\AlgorithmAnalysis.pdb
+c:\users\chance\documents\visual studio 2013\Projects\AlgorithmAnalysis\AlgorithmAnalysis\obj\Debug\AlgorithmAnalysis.exe
+c:\users\chance\documents\visual studio 2013\Projects\AlgorithmAnalysis\AlgorithmAnalysis\obj\Debug\AlgorithmAnalysis.pdb
