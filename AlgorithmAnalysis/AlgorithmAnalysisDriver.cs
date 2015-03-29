@@ -27,9 +27,11 @@ namespace AlgorithmAnalysis
             }
 
             //Use sink sort to sort list
-            Sorts.SinkSort(ref list);
+            //Sorts.InsertionSort(ref list);
+            Sorts.InsertionSort(ref list);
             Console.WriteLine('\n');
 
+            //Display sorted list
             for (int count = 0; count < n; count++ )
             {
                 Console.WriteLine(list[count]);

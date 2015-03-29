@@ -53,5 +53,26 @@ namespace AlgorithmAnalysis
             list[m] = temp;
             
         }
+
+        /// <summary>
+        /// Sorts the list using the insertion sort algorithm
+        /// </summary>
+        /// <param name="list">List to be sorted</param>
+        public static void InsertionSort(ref List<int> list)
+        {
+            int temp, j;
+
+            for(int i = 1; i< list.Count; i++)
+            {
+                temp = list[i];
+
+                for(j = i; j> 0 && temp < list[j-1]; j--)
+                {
+                    list[j] = list[j - 1];
+                }
+
+                list[j] = temp;
+            }
+        }
     }
 }

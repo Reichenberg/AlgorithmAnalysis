@@ -3,3 +3,4 @@ c:\users\chance\documents\visual studio 2013\Projects\AlgorithmAnalysis\Algorith
 c:\users\chance\documents\visual studio 2013\Projects\AlgorithmAnalysis\AlgorithmAnalysis\bin\Debug\AlgorithmAnalysis.pdb
 c:\users\chance\documents\visual studio 2013\Projects\AlgorithmAnalysis\AlgorithmAnalysis\obj\Debug\AlgorithmAnalysis.exe
 c:\users\chance\documents\visual studio 2013\Projects\AlgorithmAnalysis\AlgorithmAnalysis\obj\Debug\AlgorithmAnalysis.pdb
+C:\Users\Chance\Documents\Visual Studio 2013\Projects\AlgorithmAnalysis\AlgorithmAnalysis\obj\Debug\AlgorithmAnalysis.csprojResolveAssemblyReference.cache
