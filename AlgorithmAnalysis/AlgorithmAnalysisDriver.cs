@@ -28,7 +28,7 @@ namespace AlgorithmAnalysis
 
             //Use sink sort to sort list
             //Sorts.InsertionSort(ref list);
-            Sorts.SelectionSort(ref list, list.Count);
+            Sorts.QuickMedianOfThreeSort(ref list);
             Console.WriteLine('\n');
 
             //Display sorted list

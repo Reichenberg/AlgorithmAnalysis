@@ -58,15 +58,15 @@ namespace AlgorithmAnalysis
         /// Sorts the list using the insertion sort algorithm
         /// </summary>
         /// <param name="list">List to be sorted</param>
-        public static void InsertionSort(ref List<int> list)
+        public static void InsertionSort(ref List<int> list, int start, int end)
         {
             int temp, j;
 
-            for(int i = 1; i< list.Count; i++)
+            for(int i = start; i <= end; i++)
             {
                 temp = list[i];
 
-                for(j = i; j> 0 && temp < list[j-1]; j--)
+                for(j = i; j > start && temp < list[j-1]; j--)
                 {
                     list[j] = list[j - 1];
                 }
@@ -123,6 +123,12 @@ namespace AlgorithmAnalysis
             QuickSort(ref list, 0, list.Count - 1);
         }
 
+        /// <summary>
+        /// Quicksort algorithm
+        /// </summary>
+        /// <param name="list"> list to be sorted</param>
+        /// <param name="start">start of the list</param>
+        /// <param name="end"> end of the list to be sorted</param>
         private static void QuickSort(ref List<int> list, int start, int end)
         {
             int left = start;
@@ -157,6 +163,72 @@ namespace AlgorithmAnalysis
 
                 QuickSort(ref list, start, left - 1);
                 QuickSort(ref list, right + 1, end);
+            }
+        }
+
+        /// <summary>
+        /// Method used to easily access Quick Median of three sort
+        /// </summary>
+        /// <param name="list">list to be sorted</param>
+        public static void QuickMedianOfThreeSort(ref List<int> list)
+        {
+            QuickMedOfThreeSort(ref list, 0, list.Count - 1);
+        }
+
+        /// <summary>
+        /// Sorts the list using the Quick Median of three sort
+        /// </summary>
+        /// <param name="list">list to be sorted</param>
+        /// <param name="start">start of the list to be sorted</param>
+        /// <param name="end">end of the list to be sorted</param>
+        private static void QuickMedOfThreeSort(ref List<int> list, int start, int end)
+        {
+            const int cutoff = 10; //Point at which we switch to insertion
+
+            if(start + cutoff > end)
+            {
+                InsertionSort(ref list, start, end);
+            }
+            else
+            {
+                int middle = (start + end) / 2;
+
+                if(list[middle] < list[start])          //Find the median of three for pivot
+                {                                       //By sorting them and pivot
+                    Swap(ref list, start, middle);      // is in the middle position
+                }
+                if(list[end] < list[start])
+                {
+                    Swap(ref list, start, end);
+                }
+                if(list[end] < list[middle])
+                {
+                    Swap(ref list, middle, end);
+                }
+
+                int pivot = list[middle];
+                Swap(ref list, middle, end -1);
+
+                int left, right;
+
+                for(left = start, right = end; ; )
+                {
+                    while(list[++left] < pivot)
+                        ;
+                    while(pivot < list[--right])
+                        ;
+                    if(left < right)
+                    {
+                        Swap(ref list, left, right);
+                    }
+                    else
+                        break;
+                }
+
+                Swap(ref list, left, end - 1);
+
+                QuickMedOfThreeSort(ref list, start, left -1);
+                QuickMedOfThreeSort(ref list, left + 1, end);
             }
         }
     }
