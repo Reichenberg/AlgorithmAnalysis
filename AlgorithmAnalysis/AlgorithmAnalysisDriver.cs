@@ -16,27 +16,38 @@ namespace AlgorithmAnalysis
         static void Main(string[] args)
         {
             List<int> list = new List<int>();
-            int n = 10;
-            Random rand = new Random();
+            int n = 1000;
 
-            //Add n random numbers into list
-            for(int count = 0; count < n; count++)
+            for (int i = 0; i < n; i++ )
             {
-                list.Add(rand.Next());
-                Console.WriteLine(list[count]);
+                list.Add(i);
             }
+            list.Reverse(0, n);
+
+            Sorts.InsertionSort(ref list, 0, n);
+            list.Reverse(0, n);
+            list = Sorts.MergeSort(list);
+            list.Reverse(0, n);
+            Sorts.QuickMedianOfThreeSort(ref list);
+            list.Reverse(0, n);
+            Sorts.OriginalQuickSort(ref list);
+            list.Reverse(0, n);
+            Sorts.SinkSort(ref list);
+            list.Reverse(0, n);
+            Sorts.ShellSort(ref list);
+
 
             //Use sink sort to sort list
             //Sorts.InsertionSort(ref list);
-            Sorts.QuickMedianOfThreeSort(ref list);
+            
             Console.WriteLine('\n');
 
             //Display sorted list
-            for (int count = 0; count < n; count++ )
+            for (int count = 0; count < n; count++)
             {
                 Console.WriteLine(list[count]);
             }
-                Console.ReadLine();
+            Console.ReadLine();
 
         }
     }

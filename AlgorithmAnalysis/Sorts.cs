@@ -62,7 +62,7 @@ namespace AlgorithmAnalysis
         {
             int temp, j;
 
-            for(int i = start; i <= end; i++)
+            for(int i = 0; i < end; i++)
             {
                 temp = list[i];
 
@@ -230,6 +230,124 @@ namespace AlgorithmAnalysis
                 QuickMedOfThreeSort(ref list, start, left -1);
                 QuickMedOfThreeSort(ref list, left + 1, end);
             }
+        }
+
+        /// <summary>
+        /// Sorts the list using the shell sort method
+        /// </summary>
+        /// <param name="list">List to be sorted</param>
+        public static void ShellSort(ref List<int> list)
+        {
+            //Start with gap of n/2; divide by 2.2 each time until it reaches 1 or 0
+            for(int gap = list.Count / 2; gap > 0; gap = (gap == 2 ? 1 : (int)(gap / 2.2)))
+            {
+                //Sort a subset by insertion
+                int temp, j;
+                for(int i = gap; i < list.Count; i++)
+                {
+                    temp = list[i];
+
+                    for(j = i; j>=gap && temp < list[j-gap]; j -= gap)
+                    {
+                        list[j] = list[j - gap];
+                    }
+                    list[j] = temp;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Sorts the passed list using the Merge Sort algorithm
+        /// </summary>
+        /// <param name="list">List to be sorted</param>
+        /// <returns>Sorted list</returns>
+        public static List<int> MergeSort (List<int> list)
+        {
+            if(list.Count <= 1)
+            {
+                return list;
+            }
+
+            List<int> result = new List<int>();
+            List<int> left = new List<int>();
+            List<int> right = new List<int>();
+
+            //Create left and right sublists about half the size of the list
+            int middle = list.Count / 2;
+
+            for(int i = 0; i < middle; i++)
+            {
+                left.Add(list[i]);
+            }
+            for(int i = middle; i < list.Count; i++)
+            {
+                right.Add(list[i]);
+            }
+
+            //Recusrively apply the mergesort to each half
+            left = MergeSort(left);
+            right = MergeSort(right);
+
+
+            if (left[left.Count - 1] <= right[0])
+                return append(left, right);
+
+            //Merge the lists maintaining sorted order
+            result = merge(left, right);
+            return result;
+        }
+
+        /// <summary>
+        /// Mreges the 2 lists provided
+        /// </summary>
+        /// <param name="left">first list</param>
+        /// <param name="right">second list</param>
+        /// <returns>The two lists merged together</returns>
+        private static List<int> merge (List<int> left, List<int> right)
+        {
+            List<int> result = new List<int>();
+
+            while(left.Count > 0 && right.Count > 0)
+            {
+                if(left[0] < right[0])
+                {
+                    result.Add(left[0]);
+                    left.RemoveAt(0);
+                }
+                else
+                {
+                    result.Add(right[0]);
+                    right.RemoveAt(0);
+                }
+            }
+
+            while(left.Count > 0)
+            {
+                result.Add(left[0]);
+                left.RemoveAt(0);
+            }
+
+            while(right.Count > 0)
+            {
+                result.Add(right[0]);
+                right.RemoveAt(0);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Adds the provided lists into a single list
+        /// </summary>
+        /// <param name="left">base list</param>
+        /// <param name="right">list to add to the base list</param>
+        /// <returns>The combination of the 2 lists</returns>
+        private static List<int> append (List<int> left, List<int> right)
+        {
+            List<int> result = new List<int>(left);
+            foreach (int x in right)
+                result.Add(x);
+            return result;
         }
     }
 }
